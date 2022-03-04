@@ -66,7 +66,6 @@ def get_attraction(attractionId):
         cursor=con.cursor(dictionary=True)
         cursor.execute("SELECT * FROM info WHERE id=%s",(int(attractionId),))
         attraction=cursor.fetchone()
-        print(type(attraction))
     except Exception as e:
         print("Error:", e)
     finally:
@@ -76,8 +75,7 @@ def get_attraction(attractionId):
         result={"error":True,
                     "message":"景點編號不正確"}
         response=jsonify(result),400 
-    else:
-        print(attraction)                   
+    else:                  
         response=jsonify({"data":attraction}),200 
     return response
 
