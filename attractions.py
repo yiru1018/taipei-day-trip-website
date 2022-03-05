@@ -15,19 +15,27 @@ def get_attractions_and_counts(str1,tuple1,str2,tuple2):
         print("Error:", e)
     finally:
         con.close()
+        
+        for i in range(0,len(get_attractions)):
+                get_attractions[i]["image"]=eval(get_attractions[i]['image'])
+                
     return get_attractions, counts
 
 def count_next_page(counts,page):
-    data_remainder=counts%12
-    if data_remainder!=0:
-        last_count=1
-    else:
-        last_count=0
-    max_page=counts//12+last_count
-        
-    next_page=page+1
-    if  next_page== max_page:
+
+    if counts <=12:
         next_page=None
+        
+    if counts%12==0:
+        max_page=counts//12
+    else:
+        max_page=counts//12+1
+    
+    if page+1<max_page:
+        next_page=page+1
+    else:
+        next_page=None       
+                    
     return next_page
     
 
@@ -43,10 +51,11 @@ def get_attractions():
             str1="SELECT * FROM info WHERE name LIKE %s LIMIT %s,%s"
             tuple1=("%"+keyword+"%",page*12,12)
             str2="SELECT count(*) FROM info WHERE name LIKE %s "
-            tuple2=(","+"%"+keyword+"%",)
+            tuple2=("%"+keyword+"%",)
             get_attractions, counts=get_attractions_and_counts(str1,tuple1,str2,tuple2)    
+            print(counts)
             next_page=count_next_page(counts,page)
-            
+ 
         elif "page" in args:
             page=int(request.args.get("page"))
             
