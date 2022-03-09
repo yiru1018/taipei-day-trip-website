@@ -1,7 +1,7 @@
 //get the wrapper
 const image_wrapper = document.querySelector(".wrapper");
 
-fetch(`http://172.20.10.2:3000/api/attractions?page=0`)
+fetch(`http://18.177.180.125:3000/api/attractions?page=０`)
   .then((res) => res.json())
   .catch((error) => console.error("Error:", error))
   .then((attractions) => {
