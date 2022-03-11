@@ -4,10 +4,10 @@ const keyword = document.getElementById("keyword");
 //fetch attractions
 let next_page;
 function fetch_attractions() {
-  url = `http://192.168.50.137:3000/api/attractions?page=${render_page}`;
+  url = `http://18.177.180.125:3000/api/attractions?page=${render_page}`;
 
   if (keyword.value)
-    url = `http://192.168.50.137:3000/api/attractions?page=${render_page}&keyword=${keyword.value}`;
+    url = `http://18.177.180.125:3000/api/attractions?page=${render_page}&keyword=${keyword.value}`;
 
   fetch(url)
     .then((res) => res.json())
