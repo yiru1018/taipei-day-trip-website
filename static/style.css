@@ -57,13 +57,13 @@ div.backImage {
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
+  justify-items: end;
 }
 
 .backImage-left {
   display: grid;
-  justify-content: center;
+  width: 600px;
   align-content: center;
-  margin-left: -90px;
 }
 
 .backImage-right {
