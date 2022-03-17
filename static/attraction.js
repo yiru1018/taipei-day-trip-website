@@ -72,7 +72,7 @@ async function fetch_data() {
     const prev_dot = current_dot.previousElementSibling;
 
     if (prev_img) slide_image(img_slider_div, current_img, prev_img);
-    update_dots(current_dot, prev_dot);
+    if (prev_dot) update_dots(current_dot, prev_dot);
   });
 
   //button right function
@@ -83,7 +83,7 @@ async function fetch_data() {
     const next_dot = current_dot.nextElementSibling;
 
     if (next_img) slide_image(img_slider_div, current_img, next_img);
-    update_dots(current_dot, next_dot);
+    if (next_dot) update_dots(current_dot, next_dot);
   });
 
   //click dot move to the image
@@ -93,7 +93,6 @@ async function fetch_data() {
   img_indicator_div.addEventListener("click", (e) => {
     //what dot was clicked on?
     const target_dot = e.target.closest("span");
-    // console.log(target_dot);
     if (!target_dot) return;
 
     const current_img = img_slider_div.querySelector(".current-img");

@@ -4,7 +4,7 @@ const keyword = document.getElementById("keyword");
 //fetch attractions
 let next_page;
 function fetch_attractions() {
-  url = `http://18.177.180.125:3000/api/attractions?page=${render_page}`;
+  url = `http://192.168.1.107:3000/api/attractions?page=${render_page}`;
 
   if (keyword.value)
     url = `http://18.177.180.125:3000/api/attractions?page=${render_page}&keyword=${keyword.value}`;
@@ -38,11 +38,15 @@ function fetch_attractions() {
         let category_h4 = Object.assign(document.createElement("h4"), {
           className: "category",
         });
+        let image_a = Object.assign(document.createElement("a"), {
+          className: "image__link",
+        });
 
         img.src = element["image"][0];
         title_h3.textContent = element["name"];
         mrt_h4.textContent = element["mrt"];
         category_h4.textContent = element["category"];
+        image_a.href = `http://192.168.1.107:3000/attraction/${element["id"]}`;
 
         //deal with the info div out of image div
         if (title_h3.textContent.length >= 16) {
@@ -51,7 +55,8 @@ function fetch_attractions() {
 
         info_div.append(mrt_h4, category_h4);
         image_div.append(img, title_h3, info_div);
-        image_wrapper.appendChild(image_div);
+        image_a.appendChild(image_div);
+        image_wrapper.appendChild(image_a);
       });
     });
 }

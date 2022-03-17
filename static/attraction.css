@@ -19,6 +19,7 @@ body {
 
 main {
   display: grid;
+  grid-template-rows: auto auto auto 104px;
   justify-items: center;
 }
 
@@ -99,10 +100,6 @@ header {
   opacity: 0.6;
   cursor: pointer;
 }
-
-/* .img__btn--left {
-  left: 1.5%;
-} */
 
 .img__btn--right {
   right: 30px;
@@ -212,13 +209,6 @@ hr {
   align-items: center;
 }
 
-@media screen and (min-width: 720px) {
-  .copyright {
-    position: absolute;
-    bottom: 0px;
-  }
-}
-
 @media screen and (min-width: 1200px) {
   .navbar,
   .main__upper,
@@ -240,5 +230,10 @@ hr {
   .booking__form {
     height: 302px;
     line-height: 3;
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 0;
   }
 }
