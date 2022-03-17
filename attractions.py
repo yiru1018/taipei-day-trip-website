@@ -55,7 +55,7 @@ def get_attractions():
             get_attractions, counts=get_attractions_and_counts(str1,tuple1,str2,tuple2)    
             print(counts)
             next_page=count_next_page(counts,page)
- 
+
         elif "page" in args:
             page=int(request.args.get("page"))
             
@@ -84,7 +84,8 @@ def get_attraction(attractionId):
         result={"error":True,
                     "message":"景點編號不正確"}
         response=jsonify(result),400 
-    else:                  
+    else:
+        attraction["image"]=eval(attraction['image'])                  
         response=jsonify({"data":attraction}),200 
     return response
 
