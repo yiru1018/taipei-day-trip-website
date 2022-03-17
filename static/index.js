@@ -46,7 +46,7 @@ function fetch_attractions() {
         title_h3.textContent = element["name"];
         mrt_h4.textContent = element["mrt"];
         category_h4.textContent = element["category"];
-        image_a.href = `http://192.168.1.107:3000/attraction/${element["id"]}`;
+        image_a.href = `http://18.177.180.125:3000/attraction/${element["id"]}`;
 
         //deal with the info div out of image div
         if (title_h3.textContent.length >= 16) {
