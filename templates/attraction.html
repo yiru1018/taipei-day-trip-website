@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="../static/attraction.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="navbar__logo">
+          <h1>台北一日遊</h1>
+        </div>
+        <nav>
+          <ul class="navbar__list">
+            <li><a href="#">預定行程</a></li>
+            <li><a href="#">登入／註冊</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="main__upper">
+        <div class="image">
+          <div class="image__slider"></div>
+          <button class="img__btn img__btn--left">
+            <img src="../static/images/Button/btn_leftArrow.png" alt="" />
+          </button>
+          <button class="img__btn img__btn--right">
+            <img src="../static/images/Button/btn_rightArrow.png" alt="" />
+          </button>
+          <!-- <img src="https://picsum.photos/id/466/466/350" alt="" /> -->
+          <div class="img__indicator"></div>
+        </div>
+
+        <div class="info__above_hr">
+          <h1 id="name" class="info__items text--bold">平安鐘</h1>
+          <div class="info__items info__items--flex">
+            <div id="category"></div>
+            &nbsp;at&nbsp;
+            <div id="mrt"></div>
+          </div>
+          <form action="" class="booking__form">
+            <p class="booking__title text--bold">訂購導覽行程</p>
+            <p style="line-height: normal">
+              以此景點為中心的一日行程，帶您探索城市角落故事
+            </p>
+            <label class="booking__date text--bold" for="date"
+              >選擇日期：</label
+            >
+            <input class="booking__date_input" type="date" id="date" />
+
+            <div class="booking__radiobox">
+              <p class="text--bold">選擇時間：</p>
+              <input type="radio" id="time1" name="time" value="2000" checked />
+              <label for="time1">上半天</label>
+
+              <input type="radio" id="time2" name="time" value="2500" />
+              <label for="time2">下半天</label>
+            </div>
+
+            <div class="booking__feebox">
+              <label for="fee" class="text--bold">導覽費用：</label>
+              <div class="booking__fee">新台幣 2000 元</div>
+            </div>
+
+            <input class="booking__btn" type="submit" value="開始預定行程" />
+          </form>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="info__below_hr">
+        <div id="descreption" class="info__items"></div>
+        <div class="info__items">
+          <p class="text--bold">景點地址：</p>
+          <div id="address"></div>
+        </div>
+        <div class="info__items">
+          <p class="text--bold">交通方式：</p>
+          <div id="transport"></div>
+        </div>
+      </div>
+      <div class="copyright">
+        <img src="../static/images/COPYRIGHT.png" alt="" />
+      </div>
+    </main>
+  </body>
+  <script src="../static/attraction.js"></script>
+</html>

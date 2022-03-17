@@ -117,6 +117,15 @@ div.wrapper {
   grid-template-columns: repeat(4, minmax(270px, 1fr));
 }
 
+.image__link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.image__link:hover {
+  opacity: 0.5;
+}
+
 div.image {
   border: 1px solid #e2e2e2;
   width: 270px;
@@ -128,6 +137,7 @@ div.image img {
   height: 162px;
   object-fit: cover;
 }
+
 div.info {
   display: flex;
   justify-content: space-between;
