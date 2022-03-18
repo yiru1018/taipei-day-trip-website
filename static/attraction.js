@@ -13,10 +13,11 @@ let id = window.location.href.match(/(\d+)$/)[1];
 
 let image_list;
 const image_width = image_div.getBoundingClientRect().width;
+let test_;
 async function fetch_data() {
   let data_obj;
   try {
-    let res = await fetch(`http://18.177.180.125:3000/api/attraction/${id}`);
+    let res = await fetch(`/api/attraction/${id}`);
     res = await res.json();
     data_obj = res.data;
   } catch (e) {
