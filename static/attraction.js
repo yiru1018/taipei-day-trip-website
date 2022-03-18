@@ -89,7 +89,6 @@ async function fetch_data() {
   //click dot move to the image
   const image_slides = Array.from(img_slider_div.children);
   const dots = Array.from(img_indicator_div.children);
-  console.log(dots);
   img_indicator_div.addEventListener("click", (e) => {
     //what dot was clicked on?
     const target_dot = e.target.closest("span");
