@@ -62,7 +62,6 @@ function fetch_attractions() {
           image_wrapper.appendChild(image_a);
         });
       });
-    console.log(is_not_loading);
     is_not_loading = true;
   }
 }
@@ -84,8 +83,8 @@ function detect_mouse(e) {
 function load_more() {
   const copyright_div = document.querySelector(".copyright");
   window.onscroll = function () {
-    console.log("inner", window.innerHeight);
-    console.log("body", document.body.offsetHeight);
+    // console.log("inner", window.innerHeight);
+    // console.log("body", document.body.offsetHeight);
     if (
       document.body.offsetHeight - (window.innerHeight + window.scrollY) <=
       1
@@ -117,3 +116,154 @@ function keyword_attractions() {
 
 const search_btn = document.getElementById("search");
 search_btn.addEventListener("click", keyword_attractions);
+
+//navbar
+const member_form = document.querySelector(".member");
+const member_background = document.querySelector(".member__open_background");
+function pop_up_signin_form() {
+  initialize_member_form();
+  member_form.style.display = "flex";
+  member_background.classList.add("member__open_background--darker");
+}
+
+function signout() {
+  navbar_member_btn.textContent = "登入／註冊";
+  fetch(`/api/user`, { method: "DELETE" })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error));
+}
+
+function signout_or_popup() {
+  if (navbar_member_btn.textContent === "登出系統") signout();
+  else pop_up_signin_form();
+}
+
+const navbar_member_btn = document.querySelector("#member_open_span");
+navbar_member_btn.addEventListener("click", signout_or_popup);
+
+//member form
+const member_text = document.querySelector(".member__text");
+const member_submit_btn = document.querySelector(".member__btn");
+const member_title = document.querySelector(".member__title");
+const member_name_input = document.querySelector("#member_name");
+
+let signin_form = true;
+function switch_form() {
+  member_input_list.forEach((element) => {
+    element.value = "";
+  });
+  if (signin_form) {
+    member_title.textContent = "註冊會員帳號";
+    member_name_input.style.display = "block";
+    member_submit_btn.textContent = "註冊新帳戶";
+    member_text.textContent = "已經有帳戶了？點此登入";
+    signin_form = false;
+  } else {
+    member_title.textContent = "登入會員帳號";
+    member_name_input.style.display = "none";
+    member_submit_btn.textContent = "登入帳戶";
+    member_text.textContent = "還沒有帳戶了？點此註冊";
+    signin_form = true;
+  }
+}
+member_text.addEventListener("click", switch_form);
+
+function initialize_member_form() {
+  member_title.textContent = "登入會員帳號";
+  member_name_input.style.display = "none";
+  member_submit_btn.textContent = "登入帳戶";
+  member_text.textContent = "還沒有帳戶了？點此註冊";
+  member_input_list.forEach((element) => {
+    element.value = "";
+  });
+}
+
+function close_member_form() {
+  member_form.style.display = "none";
+  member_background.classList.remove("member__open_background--darker");
+}
+const close_member_form_btn = document.querySelector(".member__close");
+close_member_form_btn.addEventListener("click", close_member_form);
+
+const member_input_list = Array.from(
+  document.getElementsByClassName("member__input")
+);
+function get_member_form_input_value() {
+  let input_values = [];
+  member_input_list.forEach((element) => {
+    input_values.push(element.value);
+  });
+  return input_values;
+}
+
+function signin() {
+  let input_values = get_member_form_input_value();
+  let url = `/api/user`;
+  let headers = { "Content-Type": "application/json" };
+  let body = { email: input_values[1], password: input_values[2] };
+
+  fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify(body),
+  })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error))
+    .then((response) => {
+      if (response.hasOwnProperty("ok")) {
+        close_member_form();
+        navbar_member_btn.textContent = "登出系統";
+      }
+      if (response.hasOwnProperty("error")) {
+        member_text.textContent = response.message;
+      }
+    });
+}
+
+function signup() {
+  let input_values = get_member_form_input_value();
+  let url = `/api/user`;
+  let headers = { "Content-Type": "application/json" };
+  let body = {
+    name: input_values[0],
+    email: input_values[1],
+    password: input_values[2],
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(body),
+  })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error))
+    .then((response) => {
+      member_input_list.forEach((element) => {
+        element.value = "";
+      });
+      if (response.hasOwnProperty("ok")) {
+        member_text.textContent = "註冊成功！點此登入";
+      }
+      if (response.hasOwnProperty("error")) {
+        member_text.textContent = response.message;
+      }
+    });
+}
+
+function signin_or_signup() {
+  if (member_submit_btn.textContent === "登入帳戶") signin();
+  else signup();
+}
+
+member_submit_btn.addEventListener("click", signin_or_signup);
+
+function check_if_signin() {
+  fetch(`/api/user`, { method: "GET" })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error))
+    .then((response) => {
+      if (response.data !== null) navbar_member_btn.textContent = "登出系統";
+    });
+}
+
+window.addEventListener("load", check_if_signin);

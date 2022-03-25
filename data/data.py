@@ -23,7 +23,7 @@ for i in range(0, data_len):
     image_not_split=re.findall('http.+jpg|png$',data_list["file"],flags=re.I)
     image=["http"+e for e in image_not_split[0].split("http")]
     image.remove("http")
-    
+
     try:
         con=pool.get_connection()
         cursor=con.cursor()

@@ -12,6 +12,8 @@ body {
 }
 
 body {
+  display: grid;
+  justify-items: center;
   overscroll-behavior-y: none;
   overflow-x: hidden;
   position: relative;
@@ -23,6 +25,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
 }
 
 .text--bold {
@@ -38,7 +41,6 @@ header {
   z-index: 5;
   background-color: #ffffff;
   border-bottom: 1px solid #e8e8e8;
-  margin-bottom: 10px;
 }
 
 .navbar {
@@ -59,7 +61,7 @@ header {
   display: flex;
 }
 
-.navbar__list a {
+.navbar__list span {
   text-decoration: none;
   color: #666666;
   margin-left: 10px;
@@ -70,6 +72,7 @@ header {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  background: white;
 }
 
 .image {
@@ -209,6 +212,86 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+.member__open_background--darker {
+  filter: brightness(80%);
+}
+
+div.member {
+  width: 340px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 80px;
+  z-index: 10;
+  background: white;
+  border-radius: 6px;
+}
+
+.member__header--color {
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
+  height: 10px;
+  width: 340px;
+  border-radius: 6px 6px 0 0;
+}
+
+.member__inner_item {
+  width: 310px;
+  height: 47px;
+}
+
+.member__header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 5fr 0.05fr;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.member__header > h2 {
+  font-size: 24px;
+  color: #666666;
+  padding-left: 10px;
+}
+
+.member__header img {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 10px;
+}
+
+#member_name {
+  display: none;
+}
+
+.member__input {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 12px;
+}
+
+.member__btn {
+  color: white;
+  font-size: 19px;
+  border-radius: 5px;
+  margin: 5px 0;
+  background: rgba(68, 136, 153, 1);
+  border: none;
+}
+
+.member__text {
+  color: #666666;
+  text-align: center;
+  margin: 5px 0 10px 0;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1200px) {
