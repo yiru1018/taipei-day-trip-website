@@ -75,7 +75,7 @@ def signin():
     else:
         response=jsonify({"error":True, "message":"登入失敗，電子信箱或密碼錯誤"}), 400
         
-    return response
+    return make_response(response) 
 
 @user.route("/api/user", methods=["DELETE"])
 def signout():
