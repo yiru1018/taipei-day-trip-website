@@ -3,17 +3,18 @@ from pool import pool
 
 
 user=Blueprint("user",__name__)
-@user.route("/api/user/", methods=["GET"])
+@user.route("/api/user", methods=["GET"])
 def get_user_data():
     email=""
+    print(email)
     if "email" in session:
-        email = session["email"][0]
-        
+        email = session["email"][0]        
     try:
         con=pool.get_connection()
         cursor=con.cursor(dictionary=True)
         cursor.execute("SELECT id, name, email FROM members WHERE email=%s",(email,))
-        member_data=cursor.fetchone()                                            
+        member_data=cursor.fetchone()
+        print(member_data)                                            
     except Exception as e:
         print("Error:", e)
     finally:
@@ -54,7 +55,7 @@ def signup():
     return response
 
 
-@user.route("/api/user/", methods=["PATCH"])
+@user.route("/api/user", methods=["PATCH"])
 def signin():
     email=request.json.get("email")
     password=request.json.get("password")
@@ -76,7 +77,7 @@ def signin():
         
     return response
 
-@user.route("/api/user/", methods=["DELETE"])
+@user.route("/api/user", methods=["DELETE"])
 def signout():
     session.pop('email',None)
     response=jsonify({"ok":True}),200

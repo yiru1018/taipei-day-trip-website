@@ -259,13 +259,12 @@ function signin_or_signup() {
 member_submit_btn.addEventListener("click", signin_or_signup);
 
 function check_if_signin() {
-  // id = window.location.href.match(/(\d+)$/)[1];
   fetch(`/api/user`, { method: "GET" })
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
     .then((response) => {
-      if (response.data !== null) navbar_member_btn.textContent = "登出系統";
+      navbar_member_btn.textContent =
+        response.data !== null ? "登出系統" : "登入／註冊";
     });
 }
-
 window.addEventListener("load", check_if_signin);

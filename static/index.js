@@ -262,7 +262,8 @@ function check_if_signin() {
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
     .then((response) => {
-      if (response.data !== null) navbar_member_btn.textContent = "登出系統";
+      navbar_member_btn.textContent =
+        response.data !== null ? "登出系統" : "登入／註冊";
     });
 }
 
