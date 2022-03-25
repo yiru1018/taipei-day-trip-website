@@ -3,12 +3,11 @@ from pool import pool
 
 
 user=Blueprint("user",__name__)
-@user.route("/api/user/", methods=["GET"])
+@user.route("/api/user", methods=["GET"])
 def get_user_data():
     email=""
     if "email" in session:
-        email = session["email"][0]
-        
+        email = session["email"][0]        
     try:
         con=pool.get_connection()
         cursor=con.cursor(dictionary=True)
@@ -54,7 +53,7 @@ def signup():
     return response
 
 
-@user.route("/api/user/", methods=["PATCH"])
+@user.route("/api/user", methods=["PATCH"])
 def signin():
     email=request.json.get("email")
     password=request.json.get("password")
@@ -74,9 +73,9 @@ def signin():
     else:
         response=jsonify({"error":True, "message":"登入失敗，電子信箱或密碼錯誤"}), 400
         
-    return response
+    return make_response(response) 
 
-@user.route("/api/user/", methods=["DELETE"])
+@user.route("/api/user", methods=["DELETE"])
 def signout():
     session.pop('email',None)
     response=jsonify({"ok":True}),200
