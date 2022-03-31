@@ -43,6 +43,7 @@ ul li span {
   text-decoration: none;
   color: #666666;
   margin: 10px;
+  cursor: pointer;
 }
 
 main {
