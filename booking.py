@@ -13,9 +13,9 @@ def get_itinerary_data():
         cursor=con.cursor(dictionary=True)
         cursor.execute("SELECT attractionId FROM orderlist WHERE email=%s",(session["email"][0],))
         id=cursor.fetchone()
-        print(id)
-        # if id==None:
-        #     return jsonify({"data":None})
+        
+        if id==None:
+            return jsonify({"data":None})
         cursor.execute("SELECT id, name, address, image FROM info WHERE id=%s",(id["attractionId"],))
         info=cursor.fetchone()
         info["image"]=eval(info['image'])
@@ -73,8 +73,8 @@ def delete_order():
         con.close()
     return jsonify({"ok": True}),200
 
-# @booking.errorhandler(500)
-# def internal_error(error):
-#     result={"error":True,
-#             "message":"伺服器錯誤"}
-#     return jsonify(result), 500
+@booking.errorhandler(500)
+def internal_error(error):
+    result={"error":True,
+            "message":"伺服器錯誤"}
+    return jsonify(result), 500
