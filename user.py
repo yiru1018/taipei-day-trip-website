@@ -6,7 +6,6 @@ user=Blueprint("user",__name__)
 @user.route("/api/user", methods=["GET"])
 def get_user_data():
     email=""
-    print(email)
     if "email" in session:
         email = session["email"][0]        
     try:
@@ -14,7 +13,6 @@ def get_user_data():
         cursor=con.cursor(dictionary=True)
         cursor.execute("SELECT id, name, email FROM members WHERE email=%s",(email,))
         member_data=cursor.fetchone()
-        print(member_data)                                            
     except Exception as e:
         print("Error:", e)
     finally:

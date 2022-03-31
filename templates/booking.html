@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <link rel="stylesheet" href="../static/booking.css" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+        rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="member__open_background">
+            <header>
+                <div class="navbar">
+                    <div class="navbar__logo">
+                        <h1>台北一日遊</h1>
+                    </div>
+                    <nav>
+                        <ul class="navbar__list">
+                            <li><span id="booking_open_span">預定行程</span></li>
+                            <li><span id="member_open_span"">登入/註冊</span></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <p class="content welcome-text">
+                    您好，<span class="welcome-text__username"></span>，特別預定的行程如下：
+                    <div class="no-booking-text">目前沒有任何待預定的行程</div>
+                </p>
+
+                <div class="show-booking-div">
+                    <div class="content booking-info">
+                        <img src="https://picsum.photos/id/684/340/200" alt="" class="booking-info__img">
+                        <div class="booking-info__p"> 
+                            <p class="booking-info__title">台北一日遊：<span class="booking-info__name"></span></p>
+                            <p class="booking-info__text">日期：<span class="booking-info__date">2021-04-23</span></p> 
+                            <p class="booking-info__text">時間：<span class="booking-info__time"></span></p> 
+                            <p class="booking-info__text">費用：<span class="booking-info__fee"></span></p> 
+                            <p class="booking-info__text">地點：<span class="booking-info__address"></span></p> 
+                        </div>
+                    <div class="booking-info__delete-btn"><img src="../static/images/icon_delete.png" alt=""></div>
+                </div>
+                <hr />
+
+                <div class="content contact-info">
+                    <p class="content__title">您的聯絡資訊</p>
+                    <label for="" class="contact-info__text">聯絡姓名：</label>
+                    <input type="text" class="contact-info__name">
+                    <br>
+                    <label for="" class="contact-info__text">聯絡信箱：</label>
+                    <input type="email" class="contact-info__email">
+                    <br>
+                    <label for="" class="contact-info__text">手機號碼：</label>
+                    <input type="tel" class="contact-info__phone-number">
+                    <p class="contact-info__warning">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
+                </div>
+                <hr />
+
+                <div class="content payment-info">
+                    <p class="content__title">信用卡付款資訊</p>
+                    <label for="" class="contact-info__text">卡片號碼：</label>
+                    <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}"
+                    autocomplete="cc-number" maxlength="19" placeholder="**** **** **** ****" 
+                    class="contact-info__name">
+                    <br>
+                    <label for="" class="contact-info__text">過期時間：</label>
+                    <input type="tel" pattern="\d*" maxlength="7" placeholder="MM / YY" 
+                    class="contact-info__email">
+                    <br>
+                    <label for="" class="contact-info__text">驗證密碼：</label>
+                    <input ttype="tel" pattern="\d*" maxlength="4" placeholder="CVV" 
+                    class="contact-info__phone-number">
+                </div>
+                <hr />
+
+                <div class="content total-info">
+                    <p class="total-info__text">總價：新台幣 <span class="show-total-fee"></span> 元</p>
+                    <button class="total-info__submit">確認訂購並付款</button>
+                </div>
+                </div>
+                
+            </main>
+            <footer class="copyright">
+                <img src="../static/images/COPYRIGHT.png" alt="" />
+            </footer>
+        </div>
+
+        <!-- signin interface -->
+        <div class="member">
+            <div class="member__header--color"></div>
+            <div class="member__inner_item member__header">
+            <h2 class="member__title">登入會員帳號</h2>
+            <img
+                class="member__close"
+                src="../static/images/icon/icon_close.png"
+                alt=""
+            />
+            </div>
+            <input
+            class="member__inner_item member__input"
+            id="member_name"
+            type="text"
+            placeholder="輸入姓名"
+            />
+            <input
+            class="member__inner_item member__input"
+            id="member_email"
+            type="email"
+            placeholder="輸入電子信箱"
+            />
+            <input
+            class="member__inner_item member__input"
+            id="member_password"
+            type="password"
+            placeholder="輸入密碼"
+            />
+            <button class="member__inner_item member__btn">登入帳戶</button>
+            <p class="member__inner_item member__text">還沒有帳戶？點此註冊</p>
+        </div>
+
+        <script src="../static/booking.js"></script>
+    </body>
+</html>

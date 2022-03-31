@@ -65,6 +65,7 @@ header {
   text-decoration: none;
   color: #666666;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 /* image */
@@ -292,6 +293,51 @@ div.member {
   text-align: center;
   margin: 5px 0 10px 0;
   cursor: pointer;
+}
+
+.member__close {
+  cursor: pointer;
+}
+
+/* booking response */
+.booking-response {
+  width: 340px;
+  height: 150px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 300px;
+  z-index: 10;
+  background: white;
+  border-radius: 6px;
+}
+
+.booking-response__title {
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
+  height: 30px;
+  width: 340px;
+  border-radius: 6px 6px 0 0;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.booking-response__message {
+  color: #666666;
+  margin-top: 40px;
+}
+
+.booking-response__comfirm-btn {
+  width: 60px;
+  color: white;
+  font-size: 19px;
+  border-radius: 5px;
+  margin: 5px 0;
+  background: rgba(68, 136, 153, 1);
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 1200px) {

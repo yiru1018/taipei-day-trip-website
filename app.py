@@ -1,12 +1,13 @@
 from flask import *
 from attractions import attractions
 from user import user
-
+from booking import booking
 
 app=Flask(__name__, static_folder='static')
 app.secret_key="oppppppooop"
 app.register_blueprint(attractions)
 app.register_blueprint(user)
+app.register_blueprint(booking)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 

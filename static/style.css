@@ -30,7 +30,7 @@ div.navbar {
   align-items: center;
 }
 
-h1 {
+.navbar .logo h1 {
   color: rgba(68, 136, 153, 1);
 }
 
