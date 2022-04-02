@@ -103,6 +103,11 @@ hr {
   line-height: 40px;
 }
 
+.booking-info--center {
+  display: flex;
+  justify-content: center;
+}
+
 .booking-info__img {
   width: 340px;
   height: 200px;

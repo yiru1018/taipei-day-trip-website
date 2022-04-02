@@ -287,7 +287,7 @@ function booking_itinerary() {
   let setting = { method: "GET" };
   let result = fetch_api(url, setting);
   result.then((result) => {
-    if (result.hasOwnProperty("error")) window.location.replace("/");
+    if (result.hasOwnProperty("error")) pop_up_signin_form();
     else window.location.replace("/booking");
   });
 }
