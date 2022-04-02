@@ -5,7 +5,6 @@ booking=Blueprint("booking",__name__)
 
 @booking.route("/api/booking", methods=["GET"])
 def get_itinerary_data():
-    print(session.get("email"))
     if session.get("email")==None:
         return jsonify({"error": True, "message": "請先登入"}),403    
     try:
