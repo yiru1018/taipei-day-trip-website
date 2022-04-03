@@ -7,5 +7,5 @@ dbconfig={
     "database":"taipei_attractions"
 }
 pool=mysql.connector.pooling.MySQLConnectionPool(pool_name="mypool", 
-                                                     pool_size=5,
+                                                    pool_size=5,
                                                      **dbconfig)

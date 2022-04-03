@@ -11,87 +11,138 @@
     />
   </head>
   <body>
-    <header>
-      <div class="navbar">
-        <div class="navbar__logo">
-          <h1>台北一日遊</h1>
-        </div>
-        <nav>
-          <ul class="navbar__list">
-            <li><a href="#">預定行程</a></li>
-            <li><a href="#">登入／註冊</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <div class="main__upper">
-        <div class="image">
-          <div class="image__slider"></div>
-          <button class="img__btn img__btn--left">
-            <img src="../static/images/Button/btn_leftArrow.png" alt="" />
-          </button>
-          <button class="img__btn img__btn--right">
-            <img src="../static/images/Button/btn_rightArrow.png" alt="" />
-          </button>
-          <!-- <img src="https://picsum.photos/id/466/466/350" alt="" /> -->
-          <div class="img__indicator"></div>
-        </div>
-
-        <div class="info__above_hr">
-          <h1 id="name" class="info__items text--bold">平安鐘</h1>
-          <div class="info__items info__items--flex">
-            <div id="category"></div>
-            &nbsp;at&nbsp;
-            <div id="mrt"></div>
+    <div class="member__open_background">
+      <header>
+        <div class="navbar">
+          <div class="navbar__logo">
+            <h1>台北一日遊</h1>
           </div>
-          <form action="" class="booking__form">
-            <p class="booking__title text--bold">訂購導覽行程</p>
-            <p style="line-height: normal">
-              以此景點為中心的一日行程，帶您探索城市角落故事
-            </p>
-            <label class="booking__date text--bold" for="date"
-              >選擇日期：</label
-            >
-            <input class="booking__date_input" type="date" id="date" />
+          <nav>
+            <ul class="navbar__list">
+              <li><span id="booking_open_span">預定行程</span></li>
+              <li><span id="member_open_span"">登入／註冊</span></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-            <div class="booking__radiobox">
-              <p class="text--bold">選擇時間：</p>
-              <input type="radio" id="time1" name="time" value="2000" checked />
-              <label for="time1">上半天</label>
+      <main>
+        <div class="main__upper">
+          <div class="image">
+            <div class="image__slider"></div>
+            <button class="img__btn img__btn--left">
+              <img src="../static/images/Button/btn_leftArrow.png" alt="" />
+            </button>
+            <button class="img__btn img__btn--right">
+              <img src="../static/images/Button/btn_rightArrow.png" alt="" />
+            </button>
+            <div class="img__indicator"></div>
+          </div>
 
-              <input type="radio" id="time2" name="time" value="2500" />
-              <label for="time2">下半天</label>
+          <div class="info__above_hr">
+            <h1 id="name" class="info__items text--bold"></h1>
+            <div class="info__items info__items--flex">
+              <div id="category"></div>
+              &nbsp;at&nbsp;
+              <div id="mrt"></div>
             </div>
+            <div class="booking__form">
+              <p class="booking__title text--bold">訂購導覽行程</p>
+              <p style="line-height: normal">
+                以此景點為中心的一日行程，帶您探索城市角落故事
+              </p>
+              <label class="booking__date text--bold" for="date"
+                >選擇日期：</label
+              >
+              <input class="booking__date_input" type="date" id="date" />
 
-            <div class="booking__feebox">
-              <label for="fee" class="text--bold">導覽費用：</label>
-              <div class="booking__fee">新台幣 2000 元</div>
+              <div class="booking__radiobox">
+                <p class="text--bold">選擇時間：</p>
+                <input
+                  type="radio"
+                  id="time1"
+                  name="time"
+                  value="2000"
+                  checked
+                />
+                <label for="time1">上半天</label>
+
+                <input type="radio" id="time2" name="time" value="2500" />
+                <label for="time2">下半天</label>
+              </div>
+
+              <div class="booking__feebox">
+                <label for="fee" class="text--bold">導覽費用：</label>
+                <div class="booking__fee">新台幣 2000 元</div>
+              </div>
+
+              <input class="booking__btn" type="submit" value="開始預定行程" />
             </div>
-
-            <input class="booking__btn" type="submit" value="開始預定行程" />
-          </form>
+          </div>
         </div>
-      </div>
 
-      <hr />
+        <hr />
 
-      <div class="info__below_hr">
-        <div id="descreption" class="info__items"></div>
-        <div class="info__items">
-          <p class="text--bold">景點地址：</p>
-          <div id="address"></div>
+        <div class="info__below_hr">
+          <div id="descreption" class="info__items"></div>
+          <div class="info__items">
+            <p class="text--bold">景點地址：</p>
+            <div id="address"></div>
+          </div>
+          <div class="info__items">
+            <p class="text--bold">交通方式：</p>
+            <div id="transport"></div>
+          </div>
         </div>
-        <div class="info__items">
-          <p class="text--bold">交通方式：</p>
-          <div id="transport"></div>
+
+        <div class="copyright">
+          <img src="../static/images/COPYRIGHT.png" alt="" />
         </div>
+      </main>
+    </div>
+
+    <!-- signin interface -->
+    <div class="member">
+      <div class="member__header--color"></div>
+      <div class="member__inner_item member__header">
+        <h2 class="member__title">登入會員帳號</h2>
+        <img
+          class="member__close"
+          src="../static/images/icon/icon_close.png"
+          alt=""
+        />
       </div>
-      <div class="copyright">
-        <img src="../static/images/COPYRIGHT.png" alt="" />
-      </div>
-    </main>
+      <input
+        class="member__inner_item member__input"
+        id="member_name"
+        type="text"
+        placeholder="輸入姓名"
+        required
+      />
+      <input
+        class="member__inner_item member__input"
+        id="member_email"
+        type="email"
+        placeholder="輸入電子信箱"
+        required
+      />
+      <input
+        class="member__inner_item member__input"
+        id="member_password"
+        type="password"
+        placeholder="輸入密碼"
+        required
+      />
+      <button class="member__inner_item member__btn">登入帳戶</button>
+      <p class="member__inner_item member__text">還沒有帳戶？點此註冊</p>
+    </div>
+
+    <!-- booking response message -->
+    <div class="booking-response">
+      <div class="booking-response__title">預定結果</div>
+      <div class="booking-response__message"></div>
+      <button class="booking-response__comfirm-btn">確認</button>
+    </div>
+    <script src="../static/attraction.js"></script>
   </body>
-  <script src="../static/attraction.js"></script>
 </html>
