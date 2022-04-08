@@ -325,6 +325,13 @@ function onSubmit(event) {
         body: JSON.stringify(body),
       };
       let res = fetch_api(url, setting);
+      res.then((res) => {
+        if (result.hasOwnProperty("error")) {
+        } else {
+          console.log(res.data["number"]);
+          window.location.replace(`/thankyou?number=${res.data["number"]}`);
+        }
+      });
     });
   });
 }

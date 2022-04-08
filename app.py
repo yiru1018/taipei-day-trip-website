@@ -12,6 +12,7 @@ app.register_blueprint(booking)
 app.register_blueprint(order)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+# app.config["DEBUG"]=True
 
 # Pages
 @app.route("/")

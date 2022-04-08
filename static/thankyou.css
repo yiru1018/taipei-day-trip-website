@@ -59,10 +59,16 @@ header {
   cursor: pointer;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+
 .order-number {
   font-size: 19px;
   text-align: center;
   margin: 20px 0;
+  width: 340px;
 }
 
 .copyright {

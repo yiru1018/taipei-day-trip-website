@@ -175,3 +175,9 @@ function booking_itinerary() {
 }
 const navbar_booking_btn = document.querySelector("#booking_open_span");
 navbar_booking_btn.addEventListener("click", booking_itinerary);
+
+//get order number in query string
+let params = new URL(document.location).searchParams;
+let number = params.get("number");
+console.log(number);
+document.querySelector(".show-number").textContent = number;
