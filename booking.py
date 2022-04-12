@@ -10,7 +10,7 @@ def get_itinerary_data():
     try:
         con=pool.get_connection()
         cursor=con.cursor(dictionary=True)
-        cursor.execute("SELECT attractionId FROM orderlist WHERE email=%s",(session["email"][0],))
+        cursor.execute("SELECT attractionId FROM orderlist WHERE email=%s AND status IS NULL",(session["email"][0],))
         id=cursor.fetchone()
         
         if id==None:
@@ -18,7 +18,7 @@ def get_itinerary_data():
         cursor.execute("SELECT id, name, address, image FROM info WHERE id=%s",(id["attractionId"],))
         info=cursor.fetchone()
         info["image"]=eval(info['image'])
-        cursor.execute("SELECT date, time ,price FROM orderlist WHERE email=%s",(session["email"][0],))
+        cursor.execute("SELECT date, time ,price FROM orderlist WHERE email=%s AND status IS NULL",(session["email"][0],))
         order_info=cursor.fetchone()
     except Exception as e:
         print("Error:", e)
@@ -42,7 +42,7 @@ def establish_order():
     try:
         con=pool.get_connection()
         cursor=con.cursor()
-        cursor.execute("SELECT email FROM orderlist WHERE email=%s",(session["email"][0],))
+        cursor.execute("SELECT email FROM orderlist WHERE email=%s AND status IS NULL",(session["email"][0],))
         orderlist_email=cursor.fetchone()
         print(orderlist_email)
         if orderlist_email:

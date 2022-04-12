@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
         rel="stylesheet"
         />
+        <script text="text/javascript" src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
     </head>
     <body>
         <div class="member__open_background">
@@ -62,18 +63,21 @@
 
                 <div class="content payment-info">
                     <p class="content__title">信用卡付款資訊</p>
-                    <label for="" class="contact-info__text">卡片號碼：</label>
-                    <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                    autocomplete="cc-number" maxlength="19" placeholder="**** **** **** ****" 
-                    class="contact-info__name">
-                    <br>
-                    <label for="" class="contact-info__text">過期時間：</label>
-                    <input type="tel" pattern="\d*" maxlength="7" placeholder="MM / YY" 
-                    class="contact-info__email">
-                    <br>
-                    <label for="" class="contact-info__text">驗證密碼：</label>
-                    <input ttype="tel" pattern="\d*" maxlength="4" placeholder="CVV" 
-                    class="contact-info__phone-number">
+                    <dvi class="tplayout">
+                        <label for="" class="payment-info__text">卡片號碼：</label>
+                        <div class="tpfield" id="card-number"></div>
+                    </dvi>
+                    
+                    <div class="tplayout">
+                        <label for="" class="payment-info__text">過期時間：</label>
+                        <div class="tpfield" id="card-expiration-date"></div>
+                    </div>
+                    
+                    <div class="tplayout">
+                        <label for="" class="payment-info__text">驗證密碼：</label>
+                        <div class="tpfield" id="card-ccv"></div>
+                    </div>
+                    
                 </div>
                 <hr />
 
@@ -125,6 +129,13 @@
             <p class="member__inner_item member__text">還沒有帳戶？點此註冊</p>
         </div>
 
+       
         <script src="../static/booking.js"></script>
+        <!-- <script>
+           TPDirect.setupSDK(
+            124027,
+            "app_SDrvKeuo9VAIbHu6zJcNqRqNdcDBIW7U3OIOf7pwDI9Ipm9ev9A5xe0tMx0Z",
+            "sandbox"); 
+        </script> -->
     </body>
 </html>

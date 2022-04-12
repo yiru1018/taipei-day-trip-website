@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <link rel="stylesheet" href="../static/thankyou.css" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+        rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="member__open_background">
+            <header>
+                <div class="navbar">
+                    <div class="navbar__logo">
+                        <h1>台北一日遊</h1>
+                    </div>
+                    <nav>
+                        <ul class="navbar__list">
+                            <li><span id="booking_open_span">預定行程</span></li>
+                            <li><span id="member_open_span"">登入/註冊</span></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <div class="order-number">訂單已成立，訂單編號：<span class="show-number">55688</span><br>，感謝您的訂購。</div>
+            </main>
+
+            <footer class="copyright">
+                <img src="../static/images/COPYRIGHT.png" alt="" />
+            </footer>
+        </div>
+        
+
+        <!-- signin interface -->
+        <div class="member">
+            <div class="member__header--color"></div>
+            <div class="member__inner_item member__header">
+            <h2 class="member__title">登入會員帳號</h2>
+            <img
+                class="member__close"
+                src="../static/images/icon/icon_close.png"
+                alt=""
+            />
+            </div>
+            <input
+            class="member__inner_item member__input"
+            id="member_name"
+            type="text"
+            placeholder="輸入姓名"
+            required
+            />
+            <input
+            class="member__inner_item member__input"
+            id="member_email"
+            type="email"
+            placeholder="輸入電子信箱"
+            required
+            />
+            <input
+            class="member__inner_item member__input"
+            id="member_password"
+            type="password"
+            placeholder="輸入密碼"
+            required
+            />
+            <button class="member__inner_item member__btn">登入帳戶</button>
+            <p class="member__inner_item member__text">還沒有帳戶？點此註冊</p>
+        </div>
+
+        <script src="../static/thankyou.js"></script>
+    </body>
+</html>

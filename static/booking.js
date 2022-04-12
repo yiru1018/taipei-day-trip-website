@@ -40,26 +40,28 @@ function show_no_order() {
   footer.style.height = "80%";
 }
 
+let itinerary;
 function render_order() {
   let url = `/api/booking`;
   let setting = { method: "GET" };
-  let result = fetch_api(url, setting);
-  console.log(result);
-  result.then((result) => {
-    if (result.data !== null) {
+  itinerary = fetch_api(url, setting);
+  itinerary.then((itinerary) => {
+    if (itinerary.data !== null) {
       document.querySelector(".booking-info__name").textContent =
-        result.data.attraction["name"];
+        itinerary.data.attraction["name"];
       document.querySelector(".booking-info__address").textContent =
-        result.data.attraction["address"];
+        itinerary.data.attraction["address"];
       document.querySelector(".booking-info__img").src =
-        result.data.attraction["image"][0];
+        itinerary.data.attraction["image"][0];
       document.querySelector(".booking-info__date").textContent =
-        result.data["date"];
+        itinerary.data["date"];
       document.querySelector(
         ".booking-info__fee"
-      ).textContent = `新台幣 ${result.data["price"]} 元`;
+      ).textContent = `新台幣 ${itinerary.data["price"]} 元`;
       document.querySelector(".booking-info__time").textContent =
-        result.data["time"] === "afternoon" ? "下半天" : "上半天";
+        itinerary.data["time"] === "afternoon" ? "下半天" : "上半天";
+      document.querySelector(".show-total-fee").textContent =
+        itinerary.data["price"];
       show_order();
     } else show_no_order();
   });
@@ -235,3 +237,103 @@ function booking_itinerary() {
 }
 const navbar_booking_btn = document.querySelector("#booking_open_span");
 navbar_booking_btn.addEventListener("click", booking_itinerary);
+
+//payment flow
+TPDirect.setupSDK(
+  124027,
+  "app_SDrvKeuo9VAIbHu6zJcNqRqNdcDBIW7U3OIOf7pwDI9Ipm9ev9A5xe0tMx0Z",
+  "sandbox"
+);
+
+let fields = {
+  number: {
+    // css selector
+    element: "#card-number",
+    placeholder: "**** **** **** ****",
+  },
+  expirationDate: {
+    // DOM object
+    element: document.getElementById("card-expiration-date"),
+    placeholder: "MM / YY",
+  },
+  ccv: {
+    element: "#card-ccv",
+    placeholder: "ccv",
+  },
+};
+TPDirect.card.setup({
+  fields: fields,
+  styles: {
+    // style valid state
+    ".valid": {
+      color: "green",
+    },
+    // style invalid state
+    ".invalid": {
+      color: "red",
+    },
+  },
+});
+
+function onSubmit(event) {
+  event.preventDefault();
+
+  // 取得 TapPay Fields 的 status
+  const tappayStatus = TPDirect.card.getTappayFieldsStatus();
+
+  // 確認是否可以 getPrime
+  if (tappayStatus.canGetPrime === false) {
+    console.log("can not get prime");
+    return;
+  }
+
+  // Get prime
+  TPDirect.card.getPrime((result) => {
+    if (result.status !== 0) {
+      console.log("get prime error " + result.msg);
+      return;
+    }
+    console.log("get prime 成功，prime: " + result.card.prime);
+    // console.log(result);
+
+    // send prime to your server, to pay with Pay by Prime API .
+    // Pay By Prime Docs: https://docs.tappaysdk.com/tutorial/zh/back.html#pay-by-prime-api
+    console.log(itinerary);
+    itinerary.then((itinerary) => {
+      let headers = { "Content-Type": "application/json" };
+      let body = {
+        prime: result.card.prime,
+        order: {
+          price: itinerary.data["price"],
+          trip: {
+            attraction: itinerary.data.attraction,
+            date: itinerary.data["date"],
+            time: itinerary.data["time"],
+          },
+          contact: {
+            name: document.querySelector(".contact-info__name").value,
+            email: document.querySelector(".contact-info__email").value,
+            phone: document.querySelector(".contact-info__phone-number").value,
+          },
+        },
+      };
+      console.log(body);
+      let url = `/api/orders`;
+      let setting = {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      };
+      let res = fetch_api(url, setting);
+      res.then((res) => {
+        if (result.hasOwnProperty("error")) {
+        } else {
+          console.log(res.data["number"]);
+          window.location.replace(`/thankyou?number=${res.data["number"]}`);
+        }
+      });
+    });
+  });
+}
+const pay_button = document.querySelector(".total-info__submit");
+pay_button.addEventListener("click", onSubmit);
