@@ -1,11 +1,14 @@
 from flask import *
+import os
+from dotenv import load_dotenv
 from attractions import attractions
 from user import user
 from booking import booking
 from order import order
 
+load_dotenv()
 app=Flask(__name__, static_folder='static')
-app.secret_key="oppppppooop"
+app.secret_key=os.getenv("session_secret_key")
 app.register_blueprint(attractions)
 app.register_blueprint(user)
 app.register_blueprint(booking)

@@ -2,7 +2,10 @@ from flask import *
 from pool import pool
 import requests
 import random
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 order=Blueprint("order",__name__)
 
 @order.route("/api/orders", methods=["POST"])
@@ -41,9 +44,10 @@ def pay_for_order():
     finally:
         con.close()
     prime_token=request.json.get("prime")
+    partner_key=os.getenv("tappay_partner_key")
     tap_post=  {
                 "prime": prime_token,
-                "partner_key": "partner_I7R7IwAuqGJtDr8z4fCYu7WYuiyDxeD5WFauL25802oUFpybJxuAmE0N",
+                "partner_key": partner_key,
                 "merchant_id": "debere11_TAISHIN",
                 "details":"TapPay Test",
                 "amount": 100,
@@ -57,7 +61,7 @@ def pay_for_order():
     response_data=requests.post("https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime",
                                     json.dumps(tap_post, ensure_ascii=False, encoding='utf-8'),
                                     headers={"Content-Type": "application/json",
-                                            "x-api-key":"partner_I7R7IwAuqGJtDr8z4fCYu7WYuiyDxeD5WFauL25802oUFpybJxuAmE0N"})
+                                            "x-api-key":partner_key})
     response=json.loads(response_data.text)
     if response["status"]==0:
         status=0
