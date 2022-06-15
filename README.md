@@ -42,7 +42,7 @@ CVV : 123
 
 ### View Attractions
 
-![Imgur](https://imgur.com/j1kG6nN.gif)
+![Imgur](https://imgur.com/XPAs4vV.gif)
 
 ## Contact
 
