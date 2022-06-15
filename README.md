@@ -30,7 +30,7 @@ CVV : 123
 
 ### Lazy Loading & Infinite Scroll
 
-![Imgur](https://imgur.com/YJqrpjm.gif)
+![Imgur](https://imgur.com/1HTCLrC.gif)
 
 ### Keyword Search
 
