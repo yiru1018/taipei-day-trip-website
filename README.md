@@ -30,19 +30,19 @@ CVV : 123
 
 ### Lazy Loading & Infinite Scroll
 
-![Imgur](https://imgur.com/1HTCLrC.gif)
+![Imgur](https://imgur.com/9dIpMtR.gif)
 
 ### Keyword Search
 
-![Imgur](https://imgur.com/Fgiy7K2.gif)
+![Imgur](https://imgur.com/tWLntkf.gif)
 
 ### Member System
 
-![Imgur](https://imgur.com/4GRey6d.gif)
+![Imgur](https://imgur.com/3oPrQ5w.gif)
 
 ### View Attractions
 
-![Imgur](https://imgur.com/u0nop3s.gif)
+![Imgur](https://imgur.com/j1kG6nN.gif)
 
 ## Contact
 
