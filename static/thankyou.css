@@ -45,6 +45,7 @@ header {
 .navbar__logo h1 {
   color: rgba(68, 136, 153, 1);
   font-size: 30px;
+  cursor: pointer;
 }
 
 .navbar__list {

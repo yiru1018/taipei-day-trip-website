@@ -9,6 +9,12 @@ const transport_div = document.querySelector("#transport");
 const img_indicator_div = document.querySelector(".img__indicator");
 const img_slider_div = document.querySelector(".image__slider");
 
+function go_to_homepage() {
+  window.location.replace("/");
+}
+const logo = document.querySelector(".navbar__logo h1");
+logo.addEventListener("click", go_to_homepage);
+
 let id = window.location.href.match(/(\d+)$/)[1];
 
 let image_list;

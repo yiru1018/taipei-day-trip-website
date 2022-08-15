@@ -9,6 +9,12 @@ async function fetch_api(url, setting) {
   return response;
 }
 
+function go_to_homepage() {
+  window.location.replace("/");
+}
+const logo = document.querySelector(".logo h1");
+logo.addEventListener("click", go_to_homepage);
+
 function check_if_signin() {
   let url = `/api/user`;
   let setting = { method: "GET" };

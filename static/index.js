@@ -1,17 +1,29 @@
 const image_wrapper = document.querySelector(".wrapper");
 const keyword = document.getElementById("keyword");
 
+function go_to_homepage() {
+  window.location.replace("/");
+}
+const logo = document.querySelector(".logo h1");
+logo.addEventListener("click", go_to_homepage);
+
+function check_search_keyword() {
+  url = `/api/attractions?page=${render_page}`;
+  if (keyword.value)
+    url = `/api/attractions?page=${render_page}&keyword=${keyword.value}`;
+  return url;
+}
+
 //fetch attractions
 let next_page;
 let is_not_loading = true;
 function fetch_attractions() {
-  url = `/api/attractions?page=${render_page}`;
-
-  if (keyword.value)
-    url = `/api/attractions?page=${render_page}&keyword=${keyword.value}`;
-
+  let url = check_search_keyword();
+  let setting = { method: "GET" };
   if (is_not_loading) {
     is_not_loading = false;
+    let response = fetch_api(url, setting);
+    console.log("r", response);
     fetch(url)
       .then((res) => res.json())
       .catch((error) => console.error("Error:", error))
@@ -20,7 +32,7 @@ function fetch_attractions() {
 
         //keyword search no result
         if (attractions.data.length === 0) {
-          image_wrapper.textContent = `搜尋不到相關"${keyword}"的結果`;
+          image_wrapper.textContent = `搜尋不到相關"${keyword.value}"的結果`;
         }
 
         //render attractions
@@ -103,7 +115,6 @@ load_more();
 
 //search button function
 function keyword_attractions() {
-  //clear wrapper div content
   image_wrapper.innerHTML = "";
 
   //fetch keyword attractions
@@ -121,6 +132,7 @@ async function fetch_api(url, setting) {
   try {
     response = await fetch(url, setting);
     response = await response.json();
+    console.log(response);
   } catch (e) {
     console.log(`Error: ${e}`);
   }
@@ -285,11 +297,15 @@ member_submit_btn.addEventListener("click", signin_or_signup);
 function booking_itinerary() {
   let url = `/api/booking`;
   let setting = { method: "GET" };
-  let result = fetch_api(url, setting);
-  result.then((result) => {
-    if (result.hasOwnProperty("error")) pop_up_signin_form();
-    else window.location.replace("/booking");
-  });
+  (async function () {
+    try {
+      const result = await fetch_api(url, setting);
+      if (result.hasOwnProperty("error")) pop_up_signin_form();
+      else window.location.replace("/booking");
+    } catch (err) {
+      console.error(err);
+    }
+  })();
 }
 const navbar_booking_btn = document.querySelector("#booking_open_span");
 navbar_booking_btn.addEventListener("click", booking_itinerary);
