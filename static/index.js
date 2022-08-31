@@ -253,7 +253,7 @@ function signin() {
       navbar_member_btn.textContent = "登出系統";
     }
     if (result.hasOwnProperty("error")) {
-      member_text.textContent = response.message;
+      member_text.textContent = result.message;
     }
   });
 }

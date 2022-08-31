@@ -12,7 +12,7 @@ async function fetch_api(url, setting) {
 function go_to_homepage() {
   window.location.replace("/");
 }
-const logo = document.querySelector(".logo h1");
+const logo = document.querySelector("h1");
 logo.addEventListener("click", go_to_homepage);
 
 function check_if_signin() {

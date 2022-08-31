@@ -332,9 +332,9 @@ function onSubmit(event) {
       };
       let res = fetch_api(url, setting);
       res.then((res) => {
-        if (result.hasOwnProperty("error")) {
+        if (res.hasOwnProperty("error")) {
         } else {
-          console.log(res.data["number"]);
+          // console.log(res);
           window.location.replace(`/thankyou?number=${res.data["number"]}`);
         }
       });
