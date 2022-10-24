@@ -22,8 +22,8 @@ function fetch_attractions() {
   let setting = { method: "GET" };
   if (is_not_loading) {
     is_not_loading = false;
-    let response = fetch_api(url, setting);
-    console.log("r", response);
+    // let response = fetch_api(url, setting);
+    // console.log("r", response);
     fetch(url)
       .then((res) => res.json())
       .catch((error) => console.error("Error:", error))
